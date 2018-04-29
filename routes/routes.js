@@ -1,22 +1,20 @@
 var express = require('express');
-const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
-const {Card, Suggestion} = require('dialogflow-fulfillment');
 
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
   res.send(JSON.stringify({status: "ok", value: "Welcome"}));
-  return
+  return;
 });
 
 router.post('/callback', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
+  // eslint-disable-next-line no-console
+  console.log('Dialogflow Request headers: ', JSON.stringify(req.headers));
 
-  const agent = new WebhookClient({ request, response });
-  console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
-  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+  const agent = new WebhookClient({ req, res });
 
   function welcome(agent) {
     agent.add(`Welcome to my agent!`);
@@ -36,7 +34,6 @@ router.post('/callback', function(req, res) {
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('weather', handleWeather);
-  // intentMap.set('your intent name here', googleAssistantHandler);
   agent.handleRequest(intentMap);
 
 });

@@ -1,0 +1,78 @@
+{
+  "rules": {
+    "no-debugger": 2,
+    "no-eval": 0,
+    "no-unused-expressions": 2,
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "all",
+        "args": "after-used"
+      }
+    ],
+    "no-use-before-define": 0,
+    "one-var": [
+      2,
+      "never"
+    ],
+    "object-shorthand": [
+      1,
+      "always"
+    ],
+    "curly": 2,
+    "semi-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "prefer-template": 2,
+    "max-len": [
+      2,
+      140,
+      4,
+      {
+        "ignoreComments": true
+      }
+    ],
+    "eqeqeq": [
+      2,
+      "smart"
+    ],
+    "arrow-body-style": [
+      2,
+      "as-needed"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-magic-numbers": [
+      2,
+      {
+        "ignore": [
+          0,
+          1,
+          404
+        ]
+      }
+    ]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "commonjs": true
+  },
+  "globals": {
+    "Highcharts": true
+  },
+  "extends": "eslint:recommended",
+  "plugins": [
+
+  ]
+}
